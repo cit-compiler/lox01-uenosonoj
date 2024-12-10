@@ -1,0 +1,15 @@
+// doughunt.lox
+class Doughnut {
+  cook() {
+    print "Fry until golden brown.";
+  }
+}
+
+class BostonCream < Doughnut {
+  cook() {
+    super.cook();
+    print "Pipe fill of custrard and coast with chcolate.";
+  }
+}
+
+BostonCream().cook();
