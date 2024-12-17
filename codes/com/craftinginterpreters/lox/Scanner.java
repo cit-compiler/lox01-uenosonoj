@@ -85,8 +85,6 @@ class Scanner {
         Lox.error(line, "Unexpected character.");
       }
       break;
-      
-      
     }
   }
 
@@ -115,7 +113,15 @@ class Scanner {
   private void string(){
     while (peek() != '"' && !isAtEnd()){
       if (peek() == '\n') line++;
+      if(peek() == '\\' && peekNext() == '"'){
       advance();
+      advance();
+    }else if(peek() == '"'){
+      break;
+    }else{
+      advance();
+    }
+      
     }
     //文字列おわってないのに閉じちゃったよ（文字列の閉じ忘れがあるよ）エラー
     if (isAtEnd()) {
@@ -123,12 +129,13 @@ class Scanner {
       return;
     }
 
+    
     // The closing ".
     advance();  //'"'がある場所を確認
 
-    // Trim the surrounding quotes.'"'を取り除いた文章を確認
+    // Trim the surrounding quotes.'"'を取り除いた文章を表示
     String value = source.substring(start + 1, current - 1);
-    addToken(STRING, value);
+    addToken(STRING, value.replace("\\\"","\""));
   }
 
   private boolean match(char expected) {
