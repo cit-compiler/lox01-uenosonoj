@@ -35,7 +35,7 @@ public class Lox {
     private static void runPrompt() throws IOException {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input); 
-        //BufferedReader?¿½?¿½reader?¿½Æ‚ï¿½?¿½?¿½?¿½?¿½?¿½O?¿½?¿½t?¿½?¿½?¿½?¿½
+        //BufferedReader‚Éreader‚Æ‚¢‚¤–¼‘O‚ð•t‚¯‚é
 
         for (;;) { 
             System.out.print("> ");
